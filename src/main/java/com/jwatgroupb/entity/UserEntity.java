@@ -5,36 +5,56 @@
 
 package com.jwatgroupb.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "users")
-public class UserEntity {
-	
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@Column(name="username")
+@Table(name = "user")
+public class UserEntity extends BaseEntity {
+
+	@Column(name = "username")
 	private String userName;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="active")
+
+	@Column(name = "active")
 	private int active;
+
+	@OneToMany(mappedBy = "userEntity")
+	private List<BillEntity> listBills = new ArrayList<>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "roleuserid")
+	private RoleUserEntity roleUserEntity;
+
+	@OneToOne(mappedBy = "userEntity",  fetch = FetchType.LAZY)
+	private CartEntity cartEntity;
 	
-	@Column(name="roleuserid")
-	private int roleUserId;
+	@OneToOne(mappedBy = "userEntity",  fetch = FetchType.LAZY)
+	private ProfileUserEntity profileUserEntity;
+
+	
+	
+	public ProfileUserEntity getProfileUserEntity() {
+		return profileUserEntity;
+	}
+
+	public void setProfileUserEntity(ProfileUserEntity profileUserEntity) {
+		this.profileUserEntity = profileUserEntity;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -68,17 +88,28 @@ public class UserEntity {
 		this.active = active;
 	}
 
-	public int getRoleUserId() {
-		return roleUserId;
+	public RoleUserEntity getRoleUserEntity() {
+		return roleUserEntity;
 	}
 
-	public void setRoleUserId(int roleUserId) {
-		this.roleUserId = roleUserId;
+	public void setRoleUserEntity(RoleUserEntity roleUserEntity) {
+		this.roleUserEntity = roleUserEntity;
 	}
 
-	public int getId() {
-		return id;
+	public List<BillEntity> getListBills() {
+		return listBills;
 	}
-	
+
+	public void setListBills(List<BillEntity> listBills) {
+		this.listBills = listBills;
+	}
+
+	public CartEntity getCartEntity() {
+		return cartEntity;
+	}
+
+	public void setCartEntity(CartEntity cartEntity) {
+		this.cartEntity = cartEntity;
+	}
 	
 }
