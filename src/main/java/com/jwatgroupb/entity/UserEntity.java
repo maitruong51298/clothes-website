@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -36,17 +35,15 @@ public class UserEntity extends BaseEntity {
 	@OneToMany(mappedBy = "userEntity")
 	private List<BillEntity> listBills = new ArrayList<>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "roleuserid")
 	private RoleUserEntity roleUserEntity;
 
-	@OneToOne(mappedBy = "userEntity",  fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "userEntity")
 	private CartEntity cartEntity;
 	
-	@OneToOne(mappedBy = "userEntity",  fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "userEntity")
 	private ProfileUserEntity profileUserEntity;
-
-	
 	
 	public ProfileUserEntity getProfileUserEntity() {
 		return profileUserEntity;

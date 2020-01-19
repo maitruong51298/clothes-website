@@ -21,16 +21,17 @@
 								incorrect</div>
 						</c:if>
 						<c:if test="${param.accessDenied != null}">
-							<div class="alert alert-danger">you Not authorize</div>
+							<div class="alert alert-danger">You Don't Have Authorize</div>
 						</c:if>
 						
 						<form action="j_spring_security_check" method="POST">
-							<input type="text" placeholder="Name" name="j_username" />
+							<input type="text" placeholder="User Name" name="j_username" />
 							<input type="password" placeholder="Password" name="j_password"  />
-							<span> <input type="checkbox" class="checkbox">
-								Keep me signed in
+							<span> <input type="checkbox" name="remember-me" />
+								Remember me
 							</span>
 							<button type="submit" class="btn btn-default">Login</button>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 					</div>
 					<!--/login form-->
