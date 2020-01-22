@@ -32,6 +32,9 @@ public class ProductEntity extends BaseEntity{
 								  inverseJoinColumns = @JoinColumn(name = "categoryid"))
 	private List<CategoryEntity> listCategories = new ArrayList<>();
 	
+	@Column(name = "name")
+	private String name;
+	
 	@Column(name = "amount")
 	private int amount;
 	
@@ -120,6 +123,14 @@ public class ProductEntity extends BaseEntity{
 
 	public void setListCartItem(List<CartItemEntity> listCartItem) {
 		this.listCartItem = listCartItem;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

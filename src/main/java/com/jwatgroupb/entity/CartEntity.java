@@ -8,6 +8,7 @@ package com.jwatgroupb.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -26,7 +27,18 @@ public class CartEntity extends BaseEntity{
 	@OneToMany(mappedBy = "cartEntity")
 	private List<CartItemEntity> listCartItem = new ArrayList<>();
 	
+	@Column(name = "cartcode")
+	public String cartCode;
 	
+
+	public String getCartCode() {
+		return cartCode;
+	}
+
+	public void setCartCode(String cartCode) {
+		this.cartCode = cartCode;
+	}
+
 	public List<CartItemEntity> getListCartItem() {
 		return listCartItem;
 	}
