@@ -16,6 +16,7 @@ import com.jwatgroupb.dto.MyUser;
 
 public class SecurityUtils {
 
+	//getPrincipal: Đối tượng để duy trì dữ liệu đăng nhập ở trang web
 	public static MyUser getPrincipal() {
 		MyUser myUser = (MyUser) (SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		return myUser;

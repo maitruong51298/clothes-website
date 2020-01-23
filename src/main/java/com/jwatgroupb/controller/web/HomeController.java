@@ -66,9 +66,9 @@ public class HomeController {
 		}
 		return new ModelAndView("redirect:/HomePage");
 	}
-	@RequestMapping(value= "/customerAccessDenied", method = RequestMethod.GET)
+	@RequestMapping(value= "/accessDenied", method = RequestMethod.GET)
 	public ModelAndView accessDenied() {
-		return new ModelAndView("redirect:/login?accessDenied");
+		return new ModelAndView("web/accessDenied");
 	}
 	
 	@RequestMapping(value = "/ex/{id}", method = RequestMethod.GET)

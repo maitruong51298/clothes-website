@@ -28,7 +28,7 @@ public class CartEntity extends BaseEntity{
 	private List<CartItemEntity> listCartItem = new ArrayList<>();
 	
 	@Column(name = "cartcode")
-	public String cartCode;
+	private String cartCode;
 	
 
 	public String getCartCode() {
