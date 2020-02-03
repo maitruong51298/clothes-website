@@ -61,4 +61,5 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 		}
 		return false;
 	}
+	
 }

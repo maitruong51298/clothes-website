@@ -5,8 +5,6 @@
 
 package com.jwatgroupb.controller.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,62 +20,47 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jwatgroupb.entity.UserEntity;
 import com.jwatgroupb.service.CartService;
-import com.jwatgroupb.service.UserService;
 import com.jwatgroupb.util.SecurityUtils;
-
 
 @Controller(value = "homeControllerOfWeb")
 public class HomeController {
-	
-	@Autowired
-	private UserService userService;
-	
+
 	@Autowired
 	private CartService cartService;
-	
-	@RequestMapping(value = {"/","/HomePage"}, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "/", "/HomePage" }, method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
 		return mav;
 	}
-	
-	
-	@RequestMapping(value = "/show-user", method = RequestMethod.GET)
-	public ModelAndView showListUser() {
-		ModelAndView mav = new ModelAndView("web/userlist");
-		List<UserEntity> listUser= userService.findAll();
-		mav.addObject("listUser", listUser);
-		return mav;
-	}
-	
-	@RequestMapping(value= "/login", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
 		ModelAndView mav = new ModelAndView("web/login");
 		return mav;
 	}
-	
-	@RequestMapping(value = "/logout",method = RequestMethod.GET )
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if(auth!=null) {
+		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
 		return new ModelAndView("redirect:/HomePage");
 	}
-	@RequestMapping(value= "/customerAccessDenied", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/customerAccessDenied", method = RequestMethod.GET)
 	public ModelAndView accessDenied() {
 		return new ModelAndView("redirect:/login?accessDenied");
 	}
-	
+
 	@RequestMapping(value = "/ex/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public String getFoosBySimplePathWithPathVariable(
-	  @PathVariable("id") String id) {
-	    return "Get a specific Foo with id=" + id;
+	public String getFoosBySimplePathWithPathVariable(@PathVariable("id") String id) {
+		return "Get a specific Foo with id=" + id;
 	}
-	
+
 //	@RequestMapping(value = "/checkout")
 //	public ModelAndView checkOut() {
 //		List<CartItemEntity> listCartItem= new ArrayList<CartItemEntity>();
@@ -86,15 +69,14 @@ public class HomeController {
 //		mav.addObject("listCartItem", listCartItem);
 //		return mav;
 //	}
-	
+
 	@RequestMapping(value = "/LoginSuccessful")
-	public ModelAndView loginSuccessful(@CookieValue(value = "cart_code",required = false) String cartCode) {
-		String username= SecurityUtils.getPrincipal().getUsername();
-		if (cartCode!=null) {
+	public ModelAndView loginSuccessful(@CookieValue(value = "cart_code", required = false) String cartCode) {
+		String username = SecurityUtils.getPrincipal().getUsername();
+		if (cartCode != null) {
 			cartService.addCartAfterLogin(username, cartCode);
 		}
 		return new ModelAndView("redirect:/HomePage");
 	}
-	
-}
 
+}

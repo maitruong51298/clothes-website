@@ -37,23 +37,23 @@
 	href="<c:url value='/template/web/images/ico/apple-touch-icon-72-precomposed.png' />">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="<c:url value='/template/web/images/ico/apple-touch-icon-57-precomposed.png' />">
-
+<script src="<c:url value='/template/web/js/jquery.js' />"></script>
+<script src="<c:url value='/template/web/js/bootstrap.min.js' />"></script>
+<script src="<c:url value='/template/web/js/jquery.scrollUp.min.js' />"></script>
+<script src="<c:url value='/template/web/js/price-range.js' />"></script>
+<script src="<c:url value='/template/web/js/jquery.prettyPhoto.js'/>"></script>
+<script src="<c:url value='/template/web/js/main.js' />"></script>
 </head>
 <body>
 	<!-- header -->
 	<%@include file="/common/web/header.jsp"%>
-	
+
 
 	<dec:body />
-	
+
 	<!-- Footer -->
 	<%@include file="/common/web/footer.jsp"%>
-	
-	<script src="<c:url value='/template/web/js/jquery.js' />"></script>
-	<script src="<c:url value='/template/web/js/bootstrap.min.js' />"></script>
-	<script src="<c:url value='/template/web/js/jquery.scrollUp.min.js' />"></script>
-	<script src="<c:url value='/template/web/js/price-range.js' />"></script>
-	<script src="<c:url value='/template/web/js/jquery.prettyPhoto.js'/>"></script>
-	<script src="<c:url value='/template/web/js/main.js' />"></script>
+
+
 </body>
 </html>

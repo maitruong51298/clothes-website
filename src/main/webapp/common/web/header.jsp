@@ -80,7 +80,12 @@
 								<li><a href="<c:url value='/login'/>"><i
 										class="fa fa-lock"></i> Login</a></li>
 							</sec:authorize>
-							<sec:authorize access="isAuthenticated()">
+							<sec:authorize access="hasRole('admin')">
+								<li><a href="<c:url value='/login'/>"><i
+										class="fa fa-lock"></i> Login</a></li>
+							</sec:authorize>
+							<sec:authorize access="hasRole('customer')">
+
 								<li>
 									<div class="dropdown">
 										<button class="btn btn-secondary dropdown-toggle"

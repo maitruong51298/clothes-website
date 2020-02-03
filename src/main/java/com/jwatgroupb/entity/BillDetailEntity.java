@@ -29,6 +29,9 @@ public class BillDetailEntity extends BaseEntity {
 
 	@Column(name = "price")
 	private float price;
+	
+	@Column(name = "promotion")
+	private int promotion;
 
 	public BillEntity getBillEntity() {
 		return billEntity;
@@ -62,4 +65,13 @@ public class BillDetailEntity extends BaseEntity {
 		this.price = price;
 	}
 
+	public int getPromotion() {
+		return promotion;
+	}
+
+	public void setPromotion(int promotion) {
+		this.promotion = promotion;
+	}
+
+	
 }

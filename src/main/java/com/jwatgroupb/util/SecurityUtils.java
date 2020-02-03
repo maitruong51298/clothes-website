@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.jwatgroupb.dto.MyUser;
 
@@ -41,5 +42,10 @@ public class SecurityUtils {
 			results.add(authority.getAuthority());
 		}
 		return results;
+	}
+	
+	public static String passwordEncoder(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(password);
 	}
 }

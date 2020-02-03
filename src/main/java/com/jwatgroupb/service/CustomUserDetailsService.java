@@ -8,8 +8,6 @@ package com.jwatgroupb.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import com.jwatgroupb.constant.SystemConstant;
 import com.jwatgroupb.dto.MyUser;
-import com.jwatgroupb.entity.ProfileUserEntity;
 import com.jwatgroupb.entity.RoleUserEntity;
 import com.jwatgroupb.entity.UserEntity;
 import com.jwatgroupb.repository.UserRepository;
@@ -43,7 +40,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		// put thong tin vao security de duy tri thong tin khi user login vao he thong
 		MyUser myUser = new MyUser(userEntity.getUserName(), userEntity.getPassword(), true, true, true, true,
 				authorities);
-		myUser.setName(userEntity.getProfileUserEntity().getName());
+		if (role.getRoleName().equals("customer")) {
+			myUser.setName(userEntity.getProfileUserEntity().getName());
+		}
 		return myUser;
 	}
 

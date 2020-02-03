@@ -24,7 +24,7 @@
 							<div class="alert alert-danger">You Don't Have Authorize</div>
 						</c:if>
 						
-						<form action="j_spring_security_check" method="POST">
+						<form action="<c:url value="/j_spring_security_check" />" method="POST">
 							<input type="text" placeholder="User Name" name="j_username" />
 							<input type="password" placeholder="Password" name="j_password"  />
 							<span> <input type="checkbox" name="remember-me" />
