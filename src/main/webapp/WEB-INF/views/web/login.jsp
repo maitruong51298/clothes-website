@@ -43,12 +43,35 @@
 					<div class="signup-form">
 						<!--sign up form-->
 						<h2>New User Signup!</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" /> <input type="email"
-								placeholder="Email Address" /> <input type="password"
-								placeholder="Password" />
+						<form:form action="registration" method="POST"
+							modelAttribute="userForm">
+
+							<spring:bind path="userName">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+									<form:input type="text" path="userName" placeholder="Username"
+										autofocus="true"></form:input>
+									<form:errors path="userName" style="color: orangered"></form:errors>
+								</div>
+							</spring:bind>
+
+							<spring:bind path="email">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+									<form:input type="email" path="email" placeholder="Email"
+										autofocus="true"></form:input>
+									<form:errors path="email" style="color: orangered"></form:errors>
+								</div>
+							</spring:bind>
+
+							<spring:bind path="password">
+								<div class="form-group ${status.error ? 'has-error' : ''}">
+									<form:input type="password" path="password"
+										placeholder="Password"></form:input>
+									<form:errors path="password" style="color: orangered"></form:errors>
+								</div>
+							</spring:bind>
+							
 							<button type="submit" class="btn btn-default">Signup</button>
-						</form>
+						</form:form>
 					</div>
 					<!--/sign up form-->
 				</div>

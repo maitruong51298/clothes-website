@@ -20,6 +20,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	UserEntity findOneByUserNameAndActive(String name, int active);
 	
 	
+	UserEntity findFirstOneByEmail(String email);
+	
 	@Query(value = "select u from UserEntity u where u.userName like '%' || :keyword || '%'"
 			+ " OR u.email LIKE '%' || :keyword || '%'")
 	public List<UserEntity> search(@Param("keyword") String keyword);

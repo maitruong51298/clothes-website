@@ -48,4 +48,12 @@ public class SecurityUtils {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		return passwordEncoder.encode(password);
 	}
+	
+	public static String replaceNull(String string){
+	    if (string == null) {
+			return "";
+		}
+	    return string;
+	}
+	
 }

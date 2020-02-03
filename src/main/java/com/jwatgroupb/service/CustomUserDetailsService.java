@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.jwatgroupb.constant.SystemConstant;
 import com.jwatgroupb.dto.MyUser;
+import com.jwatgroupb.entity.ProfileUserEntity;
 import com.jwatgroupb.entity.RoleUserEntity;
 import com.jwatgroupb.entity.UserEntity;
 import com.jwatgroupb.repository.UserRepository;
@@ -42,6 +43,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 				authorities);
 		if (role.getRoleName().equals("customer")) {
 			myUser.setName(userEntity.getProfileUserEntity().getName());
+			
+			//Hai Update
+			ProfileUserEntity profileUser = userEntity.getProfileUserEntity();
+			
+			myUser.setName(profileUser.getName());
+			myUser.setAddress(profileUser.getAddress());
+			myUser.setBirthday(profileUser.getBirthday());
+			myUser.setPhonenumber(profileUser.getPhonenumber());
+			myUser.setEmail(userEntity.getEmail());
+			myUser.setBirthday(profileUser.getBirthday());
 		}
 		return myUser;
 	}

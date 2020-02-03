@@ -24,7 +24,7 @@
 
 	<http auto-config="false" use-expressions="true" disable-url-rewriting="true">
 
-		<intercept-url pattern="/customer/**"
+		<intercept-url pattern="/user/**"
 			access="hasAnyRole('customer')" />
 
 

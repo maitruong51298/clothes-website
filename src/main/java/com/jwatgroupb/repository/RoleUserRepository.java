@@ -17,6 +17,6 @@ import com.jwatgroupb.entity.UserEntity;
 public interface RoleUserRepository extends JpaRepository<RoleUserEntity, Long> {
 //	@Transactional
 //	@Query ("select r from RoleUserEntity r where r.id = :id")
- RoleUserEntity findOneByid(Long roleid);
+	RoleUserEntity findOneById(long id);
 
 }
