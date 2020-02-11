@@ -161,6 +161,9 @@
 					</tbody>
 				</table>
 			</div>
+			<c:if test="${param.paymentFail != null}">
+					<div class="alert alert-danger" align="center">Payment Fail. Please try again!</div>
+			</c:if>
 			<div style="float: right; padding-bottom: 30px;">
 				<label>Choose Payment Method:</label> <label class="radio-inline"><input
 					type="radio" name="optradio" value="COD">COD</label> <label

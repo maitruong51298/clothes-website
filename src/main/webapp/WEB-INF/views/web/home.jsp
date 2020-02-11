@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +35,8 @@
 										it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl1.jpg" class="girl img-responsive"
-										alt="" /> <img src="images/home/pricing.png" class="pricing"
+									<img src='<c:url value="/template/web/images/home/girl1.jpg" />' class="girl img-responsive"
+										alt="" /> <img src="<c:url value='/template/web/images/home/pricing.png' />" class="pricing"
 										alt="" />
 								</div>
 							</div>
@@ -53,8 +53,8 @@
 										it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl2.jpg" class="girl img-responsive"
-										alt="" /> <img src="images/home/pricing.png" class="pricing"
+									<img src="<c:url value='/template/web/images/home/girl1.jpg' />" class="girl img-responsive"
+										alt="" /> <img src="<c:url value='/template/web/images/home/pricing.png' />" class="pricing"
 										alt="" />
 								</div>
 							</div>
@@ -72,8 +72,8 @@
 										it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl3.jpg" class="girl img-responsive"
-										alt="" /> <img src="images/home/pricing.png" class="pricing"
+									<img src="<c:url value='/template/web/images/home/girl1.jpg' />" class="girl img-responsive"
+										alt="" /> <img src="<c:url value='/template/web/images/home/pricing.png' />" class="pricing"
 										alt="" />
 								</div>
 							</div>
@@ -278,10 +278,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="images/home/product1.jpg" alt="" />
+										<img src="<c:url value='/template/web/images/home/product1.jpg' />" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="/cart/add/1" class="btn btn-default add-to-cart"><i
+										<a href="/cart/add/1" id="1" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 								</div>
@@ -299,19 +299,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="images/home/product2.jpg" alt="" />
+										<img src="<c:url value='/template/web/images/home/product2.jpg' />" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i
+										<a href="/cart/add/2" class="btn btn-default add-to-cart" id="2"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i
-												class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
 									</div>
 								</div>
 								<div class="choose">
@@ -867,5 +859,12 @@
 			</div>
 		</div>
 	</section>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('.add-to-cart').click(function () {
+			alert("The product has been added to cart")
+		});
+	});
+	</script>
 </body>
 </html>

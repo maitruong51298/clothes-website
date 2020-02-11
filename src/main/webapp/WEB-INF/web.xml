@@ -69,7 +69,7 @@
 	</session-config>
 
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>/HomePage</welcome-file>
 	</welcome-file-list>
 
 

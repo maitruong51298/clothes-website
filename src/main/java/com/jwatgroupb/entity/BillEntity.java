@@ -15,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
@@ -42,6 +43,9 @@ public class BillEntity extends BaseEntity {
 
 	@Column(name = "deliverydate")
 	private Date deliveryDate;
+	
+	@Column(name = "billcode")
+	private String billCode;
 
 	@NotBlank
 	@Length(min = 2, max = 30)
@@ -69,6 +73,9 @@ public class BillEntity extends BaseEntity {
 	@Length( max = 200)
 	@Column(name = "note")
 	private String note;
+	
+	@OneToOne(mappedBy = "billEntity")
+	private PayerEntity payerEntity;
 
 	public UserEntity getUserEntity() {
 		return userEntity;
@@ -158,4 +165,22 @@ public class BillEntity extends BaseEntity {
 		this.email = email;
 	}
 
+	public String getBillCode() {
+		return billCode;
+	}
+
+	public void setBillCode(String billCode) {
+		this.billCode = billCode;
+	}
+
+	public PayerEntity getPayerEntity() {
+		return payerEntity;
+	}
+
+	public void setPayerEntity(PayerEntity payerEntity) {
+		this.payerEntity = payerEntity;
+	}
+
+	
+	
 }

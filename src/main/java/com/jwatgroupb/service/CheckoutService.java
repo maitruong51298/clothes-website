@@ -11,12 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jwatgroupb.constant.SystemConstant;
 import com.jwatgroupb.entity.BillDetailEntity;
 import com.jwatgroupb.entity.BillEntity;
 import com.jwatgroupb.entity.CartEntity;
 import com.jwatgroupb.entity.CartItemEntity;
+import com.jwatgroupb.entity.PayerEntity;
 import com.jwatgroupb.repository.BillDetailRepository;
 import com.jwatgroupb.repository.BillRepository;
+import com.jwatgroupb.repository.PayerRepository;
+import com.jwatgroupb.util.RandomStringUtil;
 
 @Service
 public class CheckoutService {
@@ -26,10 +30,23 @@ public class CheckoutService {
 
 	@Autowired
 	private BillDetailRepository billDetailRepository;
+	
+	@Autowired
+	private PayerRepository payerRepository;
 
+	
 	@Transactional
-	public void addBill(BillEntity bill) {
+	public String addBill(BillEntity bill,PayerEntity payer) {
+		String billCode= RandomStringUtil.Random();
+		bill.setBillCode(billCode);
+		bill.setStatus(SystemConstant.ACTIVE_STATUS);
 		billRepository.save(bill);
+		if(payer!=null) {
+			bill=billRepository.findOneByBillCode(billCode);
+			payer.setBillEntity(bill);
+			payerRepository.save(payer);
+		}
+		return billCode;
 	}
 
 	@Transactional

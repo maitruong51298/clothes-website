@@ -40,6 +40,9 @@ public class CartService {
 	public CartEntity findOneByCartCode(String cartCode) {
 		return cartRepository.findOneByCartCode(cartCode);
 	}
+	public CartItemEntity findOneCartItem(Long id) {
+		return cartItemRepository.findOne(id);
+	}
 
 	@Transactional
 	// Tao moi cart va them san pham cho khach chua dang nhap
@@ -160,4 +163,28 @@ public class CartService {
 			cartItemRepository.delete(cartItem);
 		}
 	}
+	
+	@Transactional
+	public void upQuantityOfCartItem(Long id) {
+		CartItemEntity cartItem=cartItemRepository.findOne(id);
+		cartItem.setQuanity(cartItem.getQuanity()+1);
+		cartItemRepository.save(cartItem);
+	}
+
+	@Transactional
+	public void downQuantityOfCartItem(Long id) {
+		CartItemEntity cartItem=cartItemRepository.findOne(id);
+		cartItem.setQuanity(cartItem.getQuanity()-1);
+		cartItemRepository.save(cartItem);
+	}
+	
+	@Transactional
+	public void removeCartItem(Long id) {
+		cartItemRepository.delete(id);
+		
+	}
+	
+	
+	
+	
 }

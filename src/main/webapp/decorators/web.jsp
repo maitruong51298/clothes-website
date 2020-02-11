@@ -43,6 +43,7 @@
 <script src="<c:url value='/template/web/js/price-range.js' />"></script>
 <script src="<c:url value='/template/web/js/jquery.prettyPhoto.js'/>"></script>
 <script src="<c:url value='/template/web/js/main.js' />"></script>
+
 </head>
 <body>
 	<!-- header -->

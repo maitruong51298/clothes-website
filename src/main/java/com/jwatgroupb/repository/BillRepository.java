@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.jwatgroupb.entity.BillEntity;
 
-public interface BillRepository extends JpaRepository<BillEntity, Long>{
+public interface BillRepository extends JpaRepository<BillEntity, Long> {
 
+	BillEntity findOneByBillCode(String billCode);
 }
