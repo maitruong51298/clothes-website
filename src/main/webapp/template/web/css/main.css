@@ -1,4 +1,4 @@
-﻿
+
 /*************************
 *******Typography******
 **************************/
@@ -1556,7 +1556,7 @@ h2.title {
 }
 
 .breadcrumbs .breadcrumb > li + li:before {
-  content: " ";
+  content: "�";
 }
 
 #cart_items .cart_info {
@@ -1895,7 +1895,6 @@ h2.title {
 
 .form-two, .form-one {
   float: left;
-  width: 47%
 }
 
 
@@ -1922,7 +1921,7 @@ h2.title {
 
 .order-message textarea {
   font-size: 12px;
-  height: 335px;
+  height: 220px;
   margin-bottom: 20px;
   padding: 15px 20px;
 }
@@ -2520,4 +2519,6 @@ h2.title {
   color: #FE980F;
 }
 
-
+.error {
+    color: red;
+  }

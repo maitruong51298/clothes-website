@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.objenesis.instantiator.basic.NewInstanceInstantiator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +21,6 @@ import com.jwatgroupb.repository.CartItemRepository;
 import com.jwatgroupb.repository.CartRepository;
 import com.jwatgroupb.repository.ProductRepository;
 import com.jwatgroupb.repository.UserRepository;
-import com.jwatgroupb.util.RandomStringUtil;
 
 @Service
 public class CartService {
@@ -39,8 +37,12 @@ public class CartService {
 	@Autowired
 	private ProductRepository productRepository;
 
+	public CartEntity findOneByCartCode(String cartCode) {
+		return cartRepository.findOneByCartCode(cartCode);
+	}
+
 	@Transactional
-	//Tao moi cart va them san pham cho khach chua dang nhap
+	// Tao moi cart va them san pham cho khach chua dang nhap
 	public void saveCartWithCartCodeAndProductId(String cartCode, Long productId) {
 		CartEntity cartEntity = new CartEntity();
 		cartEntity.setCartCode(cartCode);
@@ -53,9 +55,8 @@ public class CartService {
 	}
 
 	@Transactional
-	//Them san pham cho khach da co gio hang
-	public void updateCartItem(String cartCode, Long productId) {
-		CartEntity cartEntity = cartRepository.findOneByCartCode(cartCode);
+	// Them san pham cho khach da co gio hang
+	public void updateCartItem(CartEntity cartEntity, Long productId) {
 		ProductEntity productEntity = productRepository.findOne(productId);
 		CartItemEntity cartItemEntity = cartItemRepository.findOneByCartEntityAndProductEntity(cartEntity,
 				productEntity);
@@ -73,7 +74,7 @@ public class CartService {
 	}
 
 	@Transactional
-	//Them san pham cho khach hang da dang nhap tai khoan
+	// Them san pham cho khach hang da dang nhap tai khoan
 	public void updateOrCreateCartWithUsername(String username, Long productId) {
 
 		ProductEntity productEntity = productRepository.findOne(productId);
@@ -118,8 +119,8 @@ public class CartService {
 		List<CartItemEntity> listNewCartItem = newCart.getListCartItem();
 		List<CartItemEntity> listCartItemOfUser = cartOfUser.getListCartItem();
 
-		if (listNewCartItem != null) {//Neu gio hang trc khi dang nhap khong rong
-			if (listCartItemOfUser == null) {// Neu Gio Hang cua Khach rong
+		if (listNewCartItem.isEmpty() == false) {// Neu gio hang trc khi dang nhap khong rong
+			if (listCartItemOfUser.isEmpty()) {// Neu Gio Hang cua Khach rong
 				for (CartItemEntity newItem : listNewCartItem) {
 					newItem.setCartEntity(cartOfUser);
 					cartItemRepository.save(newItem);
@@ -136,6 +137,7 @@ public class CartService {
 								.findOneByCartEntityAndProductEntity(cartOfUser, productEntity);
 						cartItemEntity.setQuanity(newItem.getQuanity() + cartItemEntity.getQuanity());
 						cartItemRepository.save(cartItemEntity);
+						cartItemRepository.delete(newItem);
 					} else {// Neu san pham chua co trong gio hang
 						newItem.setCartEntity(cartOfUser);
 						cartItemRepository.save(newItem);
@@ -145,4 +147,17 @@ public class CartService {
 		}
 	}
 
+	//Tim Cart theo username
+	public CartEntity findOneByUserName(String username) {
+		UserEntity userEntity = userRepository.findOneByUserNameAndActive(username, SystemConstant.ACTIVE_STATUS);
+		return cartRepository.findOneByUserEntity(userEntity);
+	}
+
+	@Transactional
+	public void clearItemInCart(CartEntity cart) {
+		List<CartItemEntity> list= cart.getListCartItem();
+		for(CartItemEntity cartItem:list) {
+			cartItemRepository.delete(cartItem);
+		}
+	}
 }

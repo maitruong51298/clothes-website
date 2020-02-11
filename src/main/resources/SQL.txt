@@ -1,0 +1,81 @@
+insert into roleusers(id, rolename) values (1, "admin");
+insert into roleusers(id, rolename) values (2, "customer");
+-- User 
+insert into user(active, email, password, username, roleuserid) values (1, "ngochai@gmail.com", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "ngochai", 2);
+insert into profileuser(address, birthday, name, phonenumber, userid) values ("cuchi", '1995-04-25', "ngochai", 0375911341, 1);
+-- Admin
+insert into user(active, email, password, username, roleuserid) values (1, "ngochai@gmail.com", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "admin", 1);
+insert into profileuser(address, birthday, name, phonenumber, userid) values ("cuchi", '1995-04-25', "admin", 0375911341, 2);
+
+-- Product
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (1,NULL,NULL,NULL,NULL,122,'Nike Sportswear',34,0,'/template/web/images/home/NikeSportswear.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (2,NULL,NULL,NULL,NULL,341,'jade Office Dress',23,0,'/template/web/images/home/JadeOfficeDress.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (3,NULL,NULL,NULL,NULL,213,'Blue T-Shirt',15,0,'/template/web/images/home/BlueT-Shirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (4,NULL,NULL,NULL,NULL,634,'Zebra Shirt',10,0,'/template/web/images/home/ZebraShirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (5,NULL,NULL,NULL,NULL,218,'Pink T-Shirt',11,0,'/template/web/images/home/PinkT-Shirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (6,NULL,NULL,NULL,NULL,45,'Wide Striped Shirt',9,0,'/template/web/images/home/WideStripedShirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (7,NULL,NULL,NULL,NULL,311,'Black T-Shirt',8,0,'/template/web/images/home/BlackT-Shirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (8,NULL,NULL,NULL,NULL,120,'Gentle Office Suit',42,0,'/template/web/images/home/GentleOfficeSuit.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (9,NULL,NULL,NULL,NULL,93,'Black Striped Shirt',11,0,'/template/web/images/home/BlackStripedShirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (10,NULL,NULL,NULL,NULL,52,'Crocodile T-Shirt',8,0,'/template/web/images/home/CrocodileT-Shirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (11,NULL,NULL,NULL,NULL,236,'Gaps Coat',16,0,'/template/web/images/home/GapsCoat.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (12,NULL,NULL,NULL,NULL,123,'Crown Striped Shirt',15,0,'/template/web/images/home/CrownStripedShirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (13,NULL,NULL,NULL,NULL,282,'Abercrombie Blue Shirt',16,0,'/template/web/images/home/AbercrombieBlueShirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (14,NULL,NULL,NULL,NULL,92,'Crown BlueSea Shirt',12,0,'/template/web/images/home/CrownBlueSeaShirt.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (15,NULL,NULL,NULL,NULL,37,'Nike Sportswear 2',50,0,'/template/web/images/home/NikeSportswear2.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (16,NULL,NULL,NULL,NULL,28,'Nike Sportswear 3',47,0,'/template/web/images/home/NikeSportswear3.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (17,NULL,NULL,NULL,NULL,27,'Nike Sportswear 4',39,0,'/template/web/images/home/NikeSportswear4.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (18,NULL,NULL,NULL,NULL,87,'Black Sportswear Combo',59,0,'/template/web/images/home/BlackSportswearCombo.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (19,NULL,NULL,NULL,NULL,34,'Gumac Street Clothes',44,0,'/template/web/images/home/GumacStreetClothes.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (20,NULL,NULL,NULL,NULL,37,'Lovely Office Suit',48,0,'/template/web/images/home/LovelyOfficeSuit.jpg',NULL,NULL);
+INSERT INTO `product` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`amount`,`name`,`price`,`promotion`,`url1`,`url2`,`url3`) VALUES (21,NULL,NULL,NULL,NULL,85,'Summer Office Suit',35,0,'/template/web/images/home/SummerOfficeSuit.jpg',NULL,NULL);
+
+-- Category
+INSERT INTO `category` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`categoryname`) VALUES (1,NULL,NULL,NULL,NULL,'SPORTSWEAR');
+INSERT INTO `category` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`categoryname`) VALUES (2,NULL,NULL,NULL,NULL,'WOMENS');
+INSERT INTO `category` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`categoryname`) VALUES (3,NULL,NULL,NULL,NULL,'KIDS');
+INSERT INTO `category` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`categoryname`) VALUES (4,NULL,NULL,NULL,NULL,'MENS');
+INSERT INTO `category` (`id`,`createdby`,`createddate`,`modifiedby`,`modifieddate`,`categoryname`) VALUES (5,NULL,NULL,NULL,NULL,'OFFICES');
+
+-- Product category
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (1,1);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (1,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (2,2);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (2,5);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (3,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (4,3);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (5,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (6,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (7,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (8,5);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (8,2);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (9,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (10,3);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (11,3);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (12,3);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (13,3);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (14,3);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (15,1);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (15,2);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (16,1);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (16,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (17,1);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (17,2);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (18,1);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (18,4);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (19,2);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (20,2);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (20,5);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (21,2);
+INSERT INTO `product_category` (`productid`,`categoryid`) VALUES (21,5);
+
+-- Bill
+INSERT INTO `bill` (`address`, `deliverydate`, `email`, `phonenumber`, `status`, `totalmoney`, `userid`) VALUES ('cu chi', '2020-02-23', 'ngochai@gmail.com', '0375911341', 'delivering', '300', 1);
+INSERT INTO `bill` (`address`, `deliverydate`, `email`, `phonenumber`, `status`, `totalmoney`, `userid`) VALUES ('cu chi', '2020-02-03', 'ngochai@gmail.com', '0375911341', 'delivered', '200', 1);
+
+
+select * from user;
+select * from roleusers;
+select * from profileuser;
+select * from product;
+select * from bill;

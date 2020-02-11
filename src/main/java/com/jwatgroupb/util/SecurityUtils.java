@@ -11,12 +11,12 @@ import java.util.List;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.jwatgroupb.dto.MyUser;
 
 public class SecurityUtils {
 
-	//getPrincipal: Đối tượng để duy trì dữ liệu đăng nhập ở trang web
 	public static MyUser getPrincipal() {
 		MyUser myUser = (MyUser) (SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		return myUser;
@@ -43,4 +43,17 @@ public class SecurityUtils {
 		}
 		return results;
 	}
+	
+	public static String passwordEncoder(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(password);
+	}
+	
+	public static String replaceNull(String string){
+	    if (string == null) {
+			return "";
+		}
+	    return string;
+	}
+	
 }

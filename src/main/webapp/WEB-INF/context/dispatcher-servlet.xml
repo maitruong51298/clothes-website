@@ -34,6 +34,10 @@
 
 	</bean>
 	
-	<mvc:resources mapping="/template/**" location="/template/" />
-	
+	<mvc:resources mapping="/template/**"
+		location="/template/" />
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="/i18n/messages_en" />
+	</bean>
 </beans>

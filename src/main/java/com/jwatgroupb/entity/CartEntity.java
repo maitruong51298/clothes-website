@@ -29,7 +29,6 @@ public class CartEntity extends BaseEntity{
 	
 	@Column(name = "cartcode")
 	private String cartCode;
-	
 
 	public String getCartCode() {
 		return cartCode;

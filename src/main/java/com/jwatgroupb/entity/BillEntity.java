@@ -17,36 +17,56 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.jwatgroupb.validator.Phone;
+
 @Entity
 @Table(name = "bill")
-public class BillEntity extends BaseEntity{
-	
-	
+public class BillEntity extends BaseEntity {
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userid")
 	private UserEntity userEntity;
 
 	@OneToMany(mappedBy = "billEntity")
 	private List<BillDetailEntity> listBillDetails = new ArrayList<>();
-	
+
 	@Column(name = "totalmoney")
 	private float totalMoney;
-	
+
 	@Column(name = "status")
-	private String status;
-	
+	private int status;
+
 	@Column(name = "deliverydate")
 	private Date deliveryDate;
-	
+
+	@NotBlank
+	@Length(min = 2, max = 30)
 	@Column(name = "receiver")
 	private String receiver;
-	
-	@Column(name= "address")
+
+	@NotBlank
+	@Length(min = 5, max = 70)
+	@Column(name = "address")
 	private String address;
-	
-	@Column(name="phonenumber")
+
+	@Phone(message = "Phone Number is invalid")
+	@Column(name = "phonenumber")
 	private String phonenumber;
 	
+	@NotBlank
+	@Column(name = "paymentmethod")
+	private String paymentMethod;
+
+	@NotBlank
+	@Email
+	@Column(name = "email")
+	private String email;
+
+	@Length( max = 200)
 	@Column(name = "note")
 	private String note;
 
@@ -66,7 +86,6 @@ public class BillEntity extends BaseEntity{
 		this.listBillDetails = listBillDetails;
 	}
 
-
 	public float getTotalMoney() {
 		return totalMoney;
 	}
@@ -75,11 +94,11 @@ public class BillEntity extends BaseEntity{
 		this.totalMoney = totalMoney;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
@@ -122,6 +141,21 @@ public class BillEntity extends BaseEntity{
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
-	
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }
