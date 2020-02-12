@@ -38,6 +38,10 @@ public class UserService {
 		return userRepository.findOneByUserNameAndActive(username, SystemConstant.ACTIVE_STATUS);
 	}
 	
+	public ProfileUserEntity findByUserEntity(UserEntity userEntity) {
+		return profileUserRepository.findOneByUserEntity(userEntity);
+	}
+	
 	public List<CartItemEntity> findCartOfUser(String username){
 		return findByUsername(username).getCartEntity().getListCartItem();
 	}
@@ -56,6 +60,6 @@ public class UserService {
 	}
 	
 	public ProfileUserEntity findByPhonenumber(String phonenumber) {
-		return profileUserRepository.findOneByPhonenumber(phonenumber);
+		return profileUserRepository.findFirstOneByPhonenumber(phonenumber);
 	}
 }

@@ -42,8 +42,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 		MyUser myUser = new MyUser(userEntity.getUserName(), userEntity.getPassword(), true, true, true, true,
 				authorities);
 		if (role.getRoleName().equals("customer")) {
-			myUser.setName(userEntity.getProfileUserEntity().getName());
-			
+			myUser.setUsername(userEntity.getUserName());
+			myUser.setPassword(userEntity.getPassword());
 			//Hai Update
 			ProfileUserEntity profileUser = userEntity.getProfileUserEntity();
 			

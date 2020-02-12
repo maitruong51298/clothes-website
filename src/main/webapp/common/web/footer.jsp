@@ -22,7 +22,7 @@
 						<div class="video-gallery text-center">
 							<a href="#">
 								<div class="iframe-img">
-									<img src="<c:url value='/template/web/images/home/iframe1.png' />" alt="" />
+									<img src='<c:url value="/template/web/images/home/iframe1.png" />' alt="" />
 								</div>
 								<div class="overlay-icon">
 									<i class="fa fa-play-circle-o"></i>
@@ -37,7 +37,7 @@
 						<div class="video-gallery text-center">
 							<a href="#">
 								<div class="iframe-img">
-									<img src="<c:url value='/template/web/images/home/iframe2.png' />" alt="" />
+									<img src='<c:url value="/template/web/images/home/iframe2.png" />' alt="" />
 								</div>
 								<div class="overlay-icon">
 									<i class="fa fa-play-circle-o"></i>
@@ -52,7 +52,7 @@
 						<div class="video-gallery text-center">
 							<a href="#">
 								<div class="iframe-img">
-									<img src="<c:url value='/template/web/images/home/iframe3.png' />" alt="" />
+									<img src='<c:url value="/template/web/images/home/iframe3.png"/>' alt="" />
 								</div>
 								<div class="overlay-icon">
 									<i class="fa fa-play-circle-o"></i>
@@ -67,7 +67,7 @@
 						<div class="video-gallery text-center">
 							<a href="#">
 								<div class="iframe-img">
-									<img src="<c:url value='/template/web/images/home/iframe4.png' />" alt="" />
+									<img src='<c:url value="/template/web/images/home/iframe4.png"/>' alt="" />
 								</div>
 								<div class="overlay-icon">
 									<i class="fa fa-play-circle-o"></i>
@@ -80,7 +80,7 @@
 				</div>
 				<div class="col-sm-3">
 					<div class="address">
-						<img src="<c:url value='/template/web/images/home/map.png' />" alt="" />
+						<img src='<c:url value="/template/web/images/home/map.png" />' alt="" />
 						<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
 					</div>
 				</div>
@@ -165,7 +165,8 @@
 				<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights
 					reserved.</p>
 				<p class="pull-right">
-					Designed by: <span>JWAT-GroupB</span>
+					Designed by <span><a target="_blank"
+						href="http://www.themeum.com">Themeum</a></span>
 				</p>
 			</div>
 		</div>

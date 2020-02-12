@@ -33,7 +33,7 @@
 		<property name="suffix" value=".jsp" />
 
 	</bean>
-
+	
 	<mvc:resources mapping="/template/**"
 		location="/template/" />
 	<bean id="messageSource"
