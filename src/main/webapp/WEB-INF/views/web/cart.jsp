@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url var="home" value="/" scope="request" />
+
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -41,10 +41,12 @@
 
 						<c:set var="total" value="0" />
 						<c:forEach items="${cart.getListCartItem()}" var="cartitem">
-								<c:set var="price"
-									value="${cartitem.getProductEntity().getPrice()-cartitem.getProductEntity().getPrice()*cartitem.getProductEntity().getPromotion()}" />
-							<tr class="cartItem_${cartitem.getId()}">
-								<td class="cart_product"><a href=""><img alt=""></a></td>
+							<c:set var="price"
+								value="${cartitem.getProductEntity().getPrice()-cartitem.getProductEntity().getPrice()*cartitem.getProductEntity().getPromotion()}" />
+
+							<tr>
+								<td class="cart_product"><a href=""><img
+										src="images/cart/one.png" alt=""></a></td>
 								<td class="cart_description">
 									<h4>
 										<a href="">${cartitem.getProductEntity().getName()}</a>
@@ -52,32 +54,28 @@
 									<p>Web ID: 1089772</p>
 								</td>
 								<td class="cart_price">
-									<p>
-										$ <span id="price_${cartitem.getId()}">${price}</span>
-									</p>
+									<p>$ ${price}</p>
+								</td>
+								<td class="cart_price">
+									<p>${cartitem.getQuanity()}</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
-										<a class="cart_quantity_down" href="" id="${cartitem.getId()}">
-											- </a> <input class="cart_quantity_input"
-											id="quantity_${cartitem.getId()}" type="text" name="quantity"
-											value="${cartitem.getQuanity()}" size="2"> <a
-											class="cart_quantity_up" href="" id="${cartitem.getId()}">
-											+ </a>
+										<a class="cart_quantity_up" href=""> + </a> <input
+											class="cart_quantity_input" type="text" name="quantity"
+											value="${cartitem.getQuanity()}" autocomplete="off" size="2">
+										<a class="cart_quantity_down" href=""> - </a>
 									</div>
 								</td>
 								<c:set var="pricetotal" value="${price*cartitem.getQuanity()}"></c:set>
 								<td class="cart_total">
-									<p class="cart_total_price">
-										$ <span id="totalprice_${cartitem.getId()}">${pricetotal}</span>
-									</p>
+									<p class="cart_total_price">$
+										${pricetotal}</p>
 								</td>
 								<td class="cart_delete"><a class="cart_quantity_delete"
-									href="" id="${cartitem.getId()}"><i class="fa fa-times"></i></a></td>
+									href=""><i class="fa fa-times"></i></a></td>
 							</tr>
 							<c:set var="total" value="${total+ pricetotal}" />
-
-
 						</c:forEach>
 
 					</tbody>
@@ -94,9 +92,9 @@
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Cart Sub Total <span>$<span id="carttotal">${total}</span></span></li>
+							<li>Cart Sub Total <span>$${total}</span></li>
 							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$<span id="total">${total}</span></span></li>
+							<li>Total <span>$${total}</span></li>
 						</ul>
 						<a class="btn btn-default btn-lg check_out pull-right"
 							href='<c:url value="/checkout"/>'>Check Out</a>
@@ -106,105 +104,7 @@
 		</div>
 	</section>
 	<!--/#do_action-->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".cart_quantity_up").click(function(e) {
-				e.preventDefault(e);
 
-				var id = $(this).attr("id");
-				var quantityid = '#quantity_' + id;
-				var priceid = '#price_' + id;
-				var totalpriceid = '#totalprice_' + id;
-
-				var price = parseInt($(priceid).text());
-				var totalprice = parseInt($(totalpriceid).text());
-				var total = parseInt($("#total").text());
-
-				$.ajax({
-					type : "GET",
-					contentType : "application/json",
-					url : "${home}cart/plus",
-					data : {
-						id : id
-					},
-					dataType : 'json',
-					timeout : 100000,
-					success : function(data) {
-						console.log("SUCCESS: ", data);
-						var quantity = parseInt(data);
-						$(quantityid).val(quantity);
-						$(totalpriceid).text(totalprice + price);
-						$('#carttotal').text(total + price);
-						$('#total').text(total + price);
-					},
-					error : function(e) {
-						console.log("ERROR: ", e);
-					}
-				});
-			});
-
-			$(".cart_quantity_down").click(function(e) {
-				e.preventDefault(e);
-				var id = $(this).attr("id");
-				var quantityid = '#quantity_' + id;
-				var priceid = '#price_' + id;
-				var totalpriceid = '#totalprice_' + id;
-
-				var price = parseInt($(priceid).text());
-				var totalprice = parseInt($(totalpriceid).text());
-				var total = parseInt($("#total").text());
-				$.ajax({
-					type : "GET",
-					contentType : "application/json",
-					url : "${home}cart/down",
-					data : {
-						id : id
-					},
-					dataType : 'json',
-					timeout : 100000,
-					success : function(data) {
-						console.log("SUCCESS: ", data);
-						var quantity = parseInt(data);
-						$(quantityid).val(quantity);
-						$(totalpriceid).text(totalprice - price);
-						$('#carttotal').text(total - price);
-						$('#total').text(total - price);
-					},
-					error : function(e) {
-						console.log("ERROR: ", e);
-					}
-				});
-			});
-
-			$(".cart_quantity_delete").click(function(e) {
-				e.preventDefault(e);
-				var id = $(this).attr("id");
-				var cartItemClass = ".cartItem_" + id;
-				var totalpriceid = '#totalprice_' + id;
-				var totalprice = parseInt($(totalpriceid).text());
-				var total = parseInt($("#total").text());
-				$.ajax({
-					type : "GET",
-					contentType : "application/json",
-					url : "${home}cart/remove",
-					data : {
-						id : id
-					},
-					dataType : 'json',
-					timeout : 100000,
-					success : function(data) {
-						console.log("SUCCESS: ", data);
-						$("tr").remove(cartItemClass);
-						$('#carttotal').text(total - totalprice);
-						$('#total').text(total - totalprice);
-					},
-					error : function(e) {
-						console.log("ERROR: ", e);
-					}
-				});
-			});
-		});
-	</script>
 
 </body>
 </html>

@@ -41,7 +41,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href='<c:url value="/HomePage" />'><img src="<c:url value='/template/web/images/home/logo.png' />" alt="" /></a>
+						<a href='<c:url value="/HomePage" />'><img src='<c:url value="/template/web/images/home/logo.png"/>' alt="" /></a>
 					</div>
 					<div class="btn-group pull-right">
 						<div class="btn-group">
@@ -91,7 +91,7 @@
 										<button class="btn btn-secondary dropdown-toggle"
 											type="button" data-toggle="dropdown">
 											Welcome
-											<%=SecurityUtils.getPrincipal().getName()%>
+											<%=SecurityUtils.getPrincipal().getUsername()%>
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu">
@@ -146,11 +146,21 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-3">
-					<div class="search_box pull-right">
-						<input type="text" placeholder="Search" />
-					</div>
-				</div>
+
+<!-- 				<form method="POST" action="search"> -->
+<!-- 				<div class="col-sm-3"> -->
+<!-- 					<div class="search_box pull-right" > -->
+<!-- 						<input type="summit" placeholder="Search" name="keyword" id="keyword" /> -->
+
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				</form> -->
+		<form method="POST" action="search" >
+
+        Name  <input  type="text" name="keyword" id="keyword" >
+  					<input type ="submit" value="search" >
+    	</form>
+						
 			</div>
 		</div>
 	</div>

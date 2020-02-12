@@ -7,6 +7,7 @@ package com.jwatgroupb.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -30,7 +31,7 @@ public class ProfileUserEntity extends BaseEntity{
 	@Column(name = "phonenumber")
 	private String phonenumber;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "userid", referencedColumnName = "id")
 	private UserEntity userEntity;
 
