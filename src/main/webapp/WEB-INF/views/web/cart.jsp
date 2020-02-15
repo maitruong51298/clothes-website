@@ -32,7 +32,7 @@
 					<tbody>
 						<tr>
 							<td colspan="6" align="center"><c:if
-									test="${cart.getListCartItem().isEmpty()}">
+									test="${cart.listCartItem.isEmpty()}">
 									You have no items in your shopping cart.<a
 										href='<c:url value="/HomePage"/>'
 										style="text-decoration: underline;"> Back to shopping.</a>
@@ -40,40 +40,41 @@
 						</tr>
 
 						<c:set var="total" value="0" />
-						<c:forEach items="${cart.getListCartItem()}" var="cartitem">
-								<c:set var="price"
-									value="${cartitem.getProductEntity().getPrice()-cartitem.getProductEntity().getPrice()*cartitem.getProductEntity().getPromotion()}" />
-							<tr class="cartItem_${cartitem.getId()}">
-								<td class="cart_product"><a href=""><img alt=""></a></td>
+						<c:forEach items="${cart.listCartItem}" var="cartitem">
+							<c:set var="price"
+								value="${cartitem.productEntity.price-cartitem.productEntity.price*cartitem.productEntity.promotion}" />
+							<tr class="cartItem_${cartitem.id}">
+								<td class="cart_product"><a href=""><img
+										src='<c:url value="${cartitem.productEntity.url1}"/>'
+										style="width: 70px; height: 70px;"></a></td>
 								<td class="cart_description">
 									<h4>
-										<a href="">${cartitem.getProductEntity().getName()}</a>
+										<a href="">${cartitem.productEntity.name}</a>
 									</h4>
 									<p>Web ID: 1089772</p>
 								</td>
 								<td class="cart_price">
 									<p>
-										$ <span id="price_${cartitem.getId()}">${price}</span>
+										$ <span id="price_${cartitem.id}">${price}</span>
 									</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
-										<a class="cart_quantity_down" href="" id="${cartitem.getId()}">
+										<a class="cart_quantity_down" href="" id="${cartitem.id}">
 											- </a> <input class="cart_quantity_input"
-											id="quantity_${cartitem.getId()}" type="text" name="quantity"
-											value="${cartitem.getQuanity()}" size="2"> <a
-											class="cart_quantity_up" href="" id="${cartitem.getId()}">
-											+ </a>
+											id="quantity_${cartitem.id}" type="text" name="quantity"
+											value="${cartitem.quantity}" size="2"> <a
+											class="cart_quantity_up" href="" id="${cartitem.id}"> + </a>
 									</div>
 								</td>
-								<c:set var="pricetotal" value="${price*cartitem.getQuanity()}"></c:set>
+								<c:set var="pricetotal" value="${price*cartitem.quantity}"></c:set>
 								<td class="cart_total">
 									<p class="cart_total_price">
-										$ <span id="totalprice_${cartitem.getId()}">${pricetotal}</span>
+										$ <span id="totalprice_${cartitem.id}">${pricetotal}</span>
 									</p>
 								</td>
 								<td class="cart_delete"><a class="cart_quantity_delete"
-									href="" id="${cartitem.getId()}"><i class="fa fa-times"></i></a></td>
+									href="" id="${cartitem.id}"><i class="fa fa-times"></i></a></td>
 							</tr>
 							<c:set var="total" value="${total+ pricetotal}" />
 

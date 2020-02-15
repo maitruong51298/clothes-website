@@ -12,32 +12,33 @@
 <div align="left">
     <h2>Search Result</h2>
      <td>
-					<form action = "listUser">
+					<form action = "1">
 					<input  type="submit" value="List Users"></form> 
 					</td> 
+					<br>
+					<br>
     <table border="1" cellpadding="5">
         <tr>
-            <th>ID</th>
-            <th>User Name</th>
-            <th>Password</th>
-            <th>E-mail</th>
-            <th>Active</th>
+            <th align="center">ID</th>
+            <th align="center">User Name</th>
+            <th align="center">Password</th>
+            <th align="center">E-mail</th>
+            <th align="center">Active</th>
+            <th align="right" >Role</th>
+            
         </tr>
         <c:forEach items="${result}" var="user">
         <tr>
-            <td>${user.id}</td>
-            <td>${user.userName}</td>
-            <td>${user.password}</td>
-            <td>${user.email}</td>
-            <td>${user.active}</td>
+            <td align="center">${user.id}</td>
+            <td align="center">${user.userName}</td>
+            <td align="center">${user.password}</td>
+            <td align="center">${user.email}</td>
+            <td align="center">${user.active}</td>
+            <td align="center"><c:out value="${user.roleUserEntity.roleName}"></c:out></td>
               <td>
-					<form action = "edit/${user.userName}">
-					<input  type="submit" value="Edit"></form> 
-					</td> 
-					<td>
-					<form action = "delete/${user.id}" name = "${user.id}" >
-					<input type="submit" value="Delete"></form> 
-					</td> 
+					<a href=<c:url value = "/admin/editUser/${user.userName} "/> class="edit"><img src="https://iconsetc.com/icons-watermarks/simple-yellow/raphael/raphael_pensil-edit/raphael_pensil-edit_simple-yellow_512x512.png" width ="20px" height="20px" class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</a>
+                    <a href="delete/${user.id}" class="delete"><img src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/08-512.png" width ="25px" height="25px" class="material-icons"  class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</a>
+			</td>
         </tr>
       
         </c:forEach>

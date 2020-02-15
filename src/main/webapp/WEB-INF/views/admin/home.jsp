@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	THIS IS ADMIN'S HOME
+	<h1>THIS IS ADMIN'S HOME</h1>
+	<br/>
+	<a href="/admin/listUser/1">List user.</a><br/>
+	<a href="/admin/listProduct/1">List product.</a>
 </body>
 </html>

@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.jwatgroupb.constant.SystemConstant;
+import com.jwatgroupb.entity.BillEntity;
 import com.jwatgroupb.entity.CartItemEntity;
 import com.jwatgroupb.entity.ProfileUserEntity;
 import com.jwatgroupb.entity.UserEntity;
@@ -23,6 +24,7 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
 	
 	@Autowired
 	private ProfileUserRepository profileUserRepository;
@@ -57,5 +59,14 @@ public class UserService {
 	
 	public ProfileUserEntity findByPhonenumber(String phonenumber) {
 		return profileUserRepository.findOneByPhonenumber(phonenumber);
+	}
+
+	public ProfileUserEntity findByUserEntity(UserEntity userEntity) {
+		
+		return profileUserRepository.findOneByUserEntity(userEntity);
+	}
+
+	public List<BillEntity> findAllBill(Long userID) {	
+		return userRepository.findOne(userID).getListBills();
 	}
 }

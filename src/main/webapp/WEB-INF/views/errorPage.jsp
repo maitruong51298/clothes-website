@@ -8,6 +8,20 @@
 <title>Error Page</title>
 </head>
 <body>
-	<h1 align="center">${errorMsg}</h1>
+	<div class="container" align="center">
+
+		<c:if test="${not empty errCode}">
+			<h1>${errCode}: System Errors</h1>
+		</c:if>
+
+		<c:if test="${empty errCode}">
+			<h1>System Errors</h1>
+		</c:if>
+
+		<c:if test="${not empty errMsg}">
+			<h2>${errMsg}</h2>
+		</c:if>
+		
+	</div>
 </body>
 </html>

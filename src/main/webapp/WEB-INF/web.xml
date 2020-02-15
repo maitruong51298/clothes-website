@@ -25,12 +25,19 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/context/dispatcher-servlet.xml</param-value>
 		</init-param>
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+
+
 
 	<!-- Declare Spring Security Filter -->
 	<filter>
@@ -43,6 +50,7 @@
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
+
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
@@ -68,9 +76,11 @@
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
 
+
 	<welcome-file-list>
 		<welcome-file>/HomePage</welcome-file>
 	</welcome-file-list>
+
 
 
 </web-app>

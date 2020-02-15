@@ -10,7 +10,8 @@
 <body>
 	<section>
 		<div class="container">
-			<div align="center">
+			<c:if test="${param.paymentId != null}">
+					<div align="center">
 				<div style="width: 500px">
 					<h4>
 						<b>Transaction Details:</b>
@@ -50,6 +51,7 @@
 					</table>
 				</div>
 			</div>
+			</c:if>
 			<div style="font-size: 20px; padding: 60px">
 				<li>You have successfully paid.</li>
 				<li>You can view the invoice details by visiting the link: <a

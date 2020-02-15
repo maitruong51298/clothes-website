@@ -21,6 +21,7 @@ import com.jwatgroupb.repository.CartItemRepository;
 import com.jwatgroupb.repository.CartRepository;
 import com.jwatgroupb.repository.ProductRepository;
 import com.jwatgroupb.repository.UserRepository;
+import com.jwatgroupb.util.RandomStringUtil;
 
 @Service
 public class CartService {
@@ -53,7 +54,7 @@ public class CartService {
 		CartItemEntity cartItemEntity = new CartItemEntity();
 		cartItemEntity.setCartEntity(cartEntity);
 		cartItemEntity.setProductEntity(productRepository.findOne(productId));
-		cartItemEntity.setQuanity(1);
+		cartItemEntity.setQuantity(1);
 		cartItemRepository.save(cartItemEntity);
 	}
 
@@ -68,10 +69,10 @@ public class CartService {
 			cartItemEntity = new CartItemEntity();
 			cartItemEntity.setCartEntity(cartEntity);
 			cartItemEntity.setProductEntity(productRepository.findOne(productId));
-			cartItemEntity.setQuanity(1);
+			cartItemEntity.setQuantity(1);
 			cartItemRepository.save(cartItemEntity);
 		} else {
-			cartItemEntity.setQuanity(cartItemEntity.getQuanity() + 1);
+			cartItemEntity.setQuantity(cartItemEntity.getQuantity() + 1);
 			cartItemRepository.save(cartItemEntity);
 		}
 	}
@@ -91,10 +92,10 @@ public class CartService {
 				cartItemEntity = new CartItemEntity();
 				cartItemEntity.setCartEntity(cartEntity);
 				cartItemEntity.setProductEntity(productRepository.findOne(productId));
-				cartItemEntity.setQuanity(1);
+				cartItemEntity.setQuantity(1);
 				cartItemRepository.save(cartItemEntity);
 			} else {
-				cartItemEntity.setQuanity(cartItemEntity.getQuanity() + 1);
+				cartItemEntity.setQuantity(cartItemEntity.getQuantity() + 1);
 				cartItemRepository.save(cartItemEntity);
 			}
 		}
@@ -107,7 +108,7 @@ public class CartService {
 //			CartItemEntity cartItemEntity = new CartItemEntity();
 //			cartItemEntity.setCartEntity(cartEntity);
 //			cartItemEntity.setProductEntity(productRepository.findOne(productId));
-//			cartItemEntity.setQuanity(1);
+//			cartItemEntity.setQuantity(1);
 //			cartItemRepository.save(cartItemEntity);
 //		}
 
@@ -138,7 +139,7 @@ public class CartService {
 					if (listProductOfUser.contains(productEntity.getId())) {// Neu product da co trong gio hang
 						CartItemEntity cartItemEntity = cartItemRepository
 								.findOneByCartEntityAndProductEntity(cartOfUser, productEntity);
-						cartItemEntity.setQuanity(newItem.getQuanity() + cartItemEntity.getQuanity());
+						cartItemEntity.setQuantity(newItem.getQuantity() + cartItemEntity.getQuantity());
 						cartItemRepository.save(cartItemEntity);
 						cartItemRepository.delete(newItem);
 					} else {// Neu san pham chua co trong gio hang
@@ -167,14 +168,14 @@ public class CartService {
 	@Transactional
 	public void upQuantityOfCartItem(Long id) {
 		CartItemEntity cartItem=cartItemRepository.findOne(id);
-		cartItem.setQuanity(cartItem.getQuanity()+1);
+		cartItem.setQuantity(cartItem.getQuantity()+1);
 		cartItemRepository.save(cartItem);
 	}
 
 	@Transactional
 	public void downQuantityOfCartItem(Long id) {
 		CartItemEntity cartItem=cartItemRepository.findOne(id);
-		cartItem.setQuanity(cartItem.getQuanity()-1);
+		cartItem.setQuantity(cartItem.getQuantity()-1);
 		cartItemRepository.save(cartItem);
 	}
 	
@@ -182,6 +183,14 @@ public class CartService {
 	public void removeCartItem(Long id) {
 		cartItemRepository.delete(id);
 		
+	}
+	@Transactional
+	public void addCartAfterReg(String userName) {
+		UserEntity user=userRepository.findOneByUserNameAndActive(userName, SystemConstant.ACTIVE_STATUS);
+		CartEntity cart= new CartEntity();
+		cart.setCartCode(RandomStringUtil.Random());
+		cart.setUserEntity(user);
+		cartRepository.save(cart);
 	}
 	
 	

@@ -58,7 +58,7 @@ public class CheckoutService {
 			billDetail.setPrice(cartItem.getProductEntity().getPrice());
 			billDetail.setProductEntity(cartItem.getProductEntity());
 			billDetail.setPromotion(cartItem.getProductEntity().getPromotion());
-			billDetail.setQuanity(cartItem.getQuanity());
+			billDetail.setQuantity(cartItem.getQuantity());
 			billDetailRepository.save(billDetail);
 		}
 	}

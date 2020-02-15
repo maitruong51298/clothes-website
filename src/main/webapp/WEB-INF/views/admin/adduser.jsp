@@ -10,7 +10,7 @@
 <body>
 	<h1> Add user</h1>
 	<h1>${message}</h1>
-        <form:form method="POST" action="addsave" modelAttribute="user">
+        <form:form method="POST" action="saveNewUser" modelAttribute="user">
              <table>
          
                 <tr>
@@ -30,7 +30,7 @@
                 </tr>
                  <tr>
                     <td><form:label required="required" path="active" >Active</form:label></td>
-                    <td><form:input type="number" maxlength="1" step="1" min = "0" max = "1" required="required" path="active"/>    1:Active  || 0:Deactive</td>
+                    <td><form:input type="number" maxlength="1" step="1" min = "0" max = "1" required="required" path="active"/>    1:Active  || 0:Inactive</td>
                 </tr>
                  <tr>
                     <td><form:label required="required" path="roleUserEntity">Role User </form:label></td>

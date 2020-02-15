@@ -24,8 +24,8 @@ public class BillDetailEntity extends BaseEntity {
 	@JoinColumn(name = "productid")
 	private ProductEntity productEntity;
 
-	@Column(name = "quanity")
-	private int quanity;
+	@Column(name = "quantity")
+	private int quantity;
 
 	@Column(name = "price")
 	private float price;
@@ -49,12 +49,12 @@ public class BillDetailEntity extends BaseEntity {
 		this.productEntity = productEntity;
 	}
 
-	public int getQuanity() {
-		return quanity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setQuanity(int quanity) {
-		this.quanity = quanity;
+	public void setQuantity(int quanity) {
+		this.quantity = quanity;
 	}
 
 	public float getPrice() {

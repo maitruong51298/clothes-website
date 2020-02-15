@@ -11,6 +11,7 @@ import java.util.Date;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+@SuppressWarnings("serial")
 public class MyUser extends User{
 
 	public MyUser(String username, String password, boolean enabled, boolean accountNonExpired,
@@ -25,7 +26,7 @@ public class MyUser extends User{
 	private Date birthday;
 	private String phonenumber;
 	private String email;
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -65,6 +66,5 @@ public class MyUser extends User{
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
-
 	
 }

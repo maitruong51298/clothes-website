@@ -35,19 +35,19 @@
 								<form:form id="form1" action="checkout" method="POST"
 									modelAttribute="bill">
 									<form:input id="email" path="email" type="text"
-										placeholder="Email*" value="${user.getEmail()}" />
+										placeholder="Email*" value="${user.email}" />
 									<form:errors path="email" cssClass="error" />
 									<form:input id="name" path="receiver" type="text"
 										placeholder="Full Name *"
-										value="${user.getProfileUserEntity().getName()}" />
+										value="${user.profileUserEntity.name}" />
 									<form:errors path="receiver" cssClass="error" />
 									<form:input id="address" path="address" type="text"
 										placeholder="Address 1 *"
-										value="${user.getProfileUserEntity().getAddress()}" />
+										value="${user.profileUserEntity.address}" />
 									<form:errors path="address" cssClass="error" />
 									<form:input id="phone" path="phonenumber" type="text"
 										placeholder="Phone *"
-										value="${user.getProfileUserEntity().getPhonenumber()}" />
+										value="${user.profileUserEntity.phonenumber}" />
 									<form:errors path="phonenumber" cssClass="error" />
 									<br />
 									<form:hidden id="method" path="paymentMethod" />
@@ -98,7 +98,7 @@
 					<tbody>
 						<tr>
 							<td colspan="6" align="center"><c:if
-									test="${cart.getListCartItem().isEmpty()}">
+									test="${cart.listCartItem.isEmpty()}">
 									You have no items in your shopping cart.<a
 										href='<c:url value="/HomePage"/>'
 										style="text-decoration: underline;"> Back to shopping.</a>
@@ -106,16 +106,16 @@
 						</tr>
 
 						<c:set var="total" value="0" />
-						<c:forEach items="${cart.getListCartItem()}" var="cartitem">
+						<c:forEach items="${cart.listCartItem}" var="cartitem">
 							<c:set var="price"
-								value="${cartitem.getProductEntity().getPrice()-cartitem.getProductEntity().getPrice()*cartitem.getProductEntity().getPromotion()}" />
+								value="${cartitem.productEntity.price-cartitem.productEntity.price*cartitem.productEntity.promotion}" />
 
 							<tr>
 								<td class="cart_product"><a href=""><img
-										src="images/cart/one.png" alt=""></a></td>
+										src='<c:url value="${cartitem.productEntity.url1}"/>' style="width: 70px; height: 70px;"></a></td>
 								<td class="cart_description">
 									<h4>
-										<a href="">${cartitem.getProductEntity().getName()}</a>
+										<a href="">${cartitem.productEntity.name}</a>
 									</h4>
 									<p>Web ID: 1089772</p>
 								</td>
@@ -123,9 +123,9 @@
 									<p>$ ${price}</p>
 								</td>
 								<td class="cart_price">
-									<p style="padding-left: 20px">${cartitem.getQuanity()}</p>
+									<p style="padding-left: 20px">${cartitem.quantity}</p>
 								</td>
-								<c:set var="pricetotal" value="${price*cartitem.getQuanity()}"></c:set>
+								<c:set var="pricetotal" value="${price*cartitem.quantity}"></c:set>
 								<td class="cart_total">
 									<p class="cart_total_price">$ ${pricetotal}</p>
 								</td>

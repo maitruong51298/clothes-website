@@ -93,9 +93,9 @@ public class CartController {
 		CartItemEntity cartItem= cartService.findOneCartItem(cartItemId);
 		ObjectMapper mapper= new ObjectMapper();
 		String ajaxResponse= "";
-		System.out.println(cartItem.getQuanity());
+		System.out.println(cartItem.getQuantity());
 		try {
-			ajaxResponse=mapper.writeValueAsString(cartItem.getQuanity());
+			ajaxResponse=mapper.writeValueAsString(cartItem.getQuantity());
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -109,9 +109,9 @@ public class CartController {
 		CartItemEntity cartItem= cartService.findOneCartItem(cartItemId);
 		ObjectMapper mapper= new ObjectMapper();
 		String ajaxResponse= "";
-		System.out.println(cartItem.getQuanity());
+		System.out.println(cartItem.getQuantity());
 		try {
-			ajaxResponse=mapper.writeValueAsString(cartItem.getQuanity());
+			ajaxResponse=mapper.writeValueAsString(cartItem.getQuantity());
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

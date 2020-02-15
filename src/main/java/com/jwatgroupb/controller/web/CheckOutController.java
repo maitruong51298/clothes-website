@@ -25,11 +25,12 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jwatgroupb.controller.exceptionhandler.CustomException;
 import com.jwatgroupb.entity.BillEntity;
 import com.jwatgroupb.entity.CartEntity;
 import com.jwatgroupb.entity.PayerEntity;
 import com.jwatgroupb.entity.UserEntity;
-import com.jwatgroupb.service.BillService;
+import com.jwatgroupb.service.BillServiceImpl;
 import com.jwatgroupb.service.CartService;
 import com.jwatgroupb.service.CheckoutService;
 import com.jwatgroupb.service.EmailServiceImpl;
@@ -70,7 +71,7 @@ public class CheckOutController {
 	private EmailServiceImpl emailService;
 
 	@Autowired
-	private BillService billService;
+	private BillServiceImpl billService;
 
 	@Autowired
 	private PaypalService paypalService;
@@ -135,6 +136,11 @@ public class CheckOutController {
 					mav.setViewName("web/paymentsuccess");
 					return mav;
 				} else {
+					if (SecurityUtils.isAuthenticanted() == true) {
+						String username = SecurityUtils.getPrincipal().getUsername();
+						userEntity = userService.findByUsername(username);
+						bill.setUserEntity(userEntity);
+					}
 					String cancelUrl = Utils.getBaseURL(request) + "/" + CANCEL_URL;
 					String successUrl = Utils.getBaseURL(request) + "/" + SUCCESS_URL;
 					Double total = (double) bill.getTotalMoney();
@@ -167,6 +173,7 @@ public class CheckOutController {
 	public ModelAndView successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId,
 			@SessionAttribute("bill") BillEntity bill, @SessionAttribute("cart") CartEntity cart) {
 		ModelAndView mav = new ModelAndView();
+		
 		try {
 			Payment payment = paypalService.executePayment(paymentId, payerId);
 			if (payment.getState().equals("approved")) {
@@ -191,9 +198,11 @@ public class CheckOutController {
 		return mav;
 	}
 
+	//Show Invoice
 	@RequestMapping(value = "/bill/{billCode}")
 	public void showInvoice(@PathVariable("billCode") String billCode, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html");
+		if(billService.findOneByBillCode(billCode)== null) throw new CustomException("404 data", "Bill is not found!");
 		JRBeanCollectionDataSource dataSrc = new JRBeanCollectionDataSource(billService.report(billCode));
 		InputStream inputStream = this.getClass().getResourceAsStream("/report/Invoice.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);

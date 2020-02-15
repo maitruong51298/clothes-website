@@ -36,10 +36,10 @@ public class BillServiceImpl implements BillService {
 			item.put("id", i);
 			String name =product.getProductEntity().getName();
 			item.put("nameProduct", name);
-			item.put("quantity", product.getQuanity());
+			item.put("quantity", product.getQuantity());
 			item.put("promotion", product.getPromotion());
 			item.put("price", product.getPrice());
-			float total= (product.getPrice()-product.getPrice()*product.getPromotion())*product.getQuanity();
+			float total= (product.getPrice()-product.getPrice()*product.getPromotion())*product.getQuantity();
 			item.put("total",total );
 			result.add(item);
 		}
@@ -63,6 +63,12 @@ public class BillServiceImpl implements BillService {
 		parameter.put("logo", inputStream);
 		return parameter;
 		
+	}
+
+	@Override
+	public BillEntity findOneByBillCode(String billCode) {
+		
+		return billRepository.findOneByBillCode(billCode);
 	}
 
 }

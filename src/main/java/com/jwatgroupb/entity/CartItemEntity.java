@@ -23,8 +23,8 @@ public class CartItemEntity extends BaseEntity{
 	@JoinColumn(name = "productid")
 	private ProductEntity productEntity;
 	
-	@Column(name = "quanity")
-	private int quanity;
+	@Column(name = "quantity")
+	private int quantity;
 
 	public CartEntity getCartEntity() {
 		return cartEntity;
@@ -42,12 +42,12 @@ public class CartItemEntity extends BaseEntity{
 		this.productEntity = productEntity;
 	}
 
-	public int getQuanity() {
-		return quanity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setQuanity(int quanity) {
-		this.quanity = quanity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 	

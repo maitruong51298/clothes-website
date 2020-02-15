@@ -41,7 +41,8 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href='<c:url value="/HomePage" />'><img src="<c:url value='/template/web/images/home/logo.png' />" alt="" /></a>
+						<a href='<c:url value="/HomePage" />'><img
+							src="<c:url value='/template/web/images/home/logo.png' />" alt="" /></a>
 					</div>
 					<div class="btn-group pull-right">
 						<div class="btn-group">
@@ -72,10 +73,10 @@
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
 
-							<li><a href="checkout.html"><i class="fa fa-crosshairs"></i>
+							<li><a href='/checkout'><i class="fa fa-crosshairs"></i>
 									Checkout</a></li>
-							<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
-									Cart</a></li>
+							<li><a href='<c:url value="/cart" />'><i
+									class="fa fa-shopping-cart"></i> Cart</a></li>
 							<sec:authorize access="isAnonymous()">
 								<li><a href="<c:url value='/login'/>"><i
 										class="fa fa-lock"></i> Login</a></li>
@@ -96,7 +97,8 @@
 										</button>
 										<ul class="dropdown-menu">
 											<li><a href="<c:url value="/user/profile" />">Profile</a></li>
-											<li><a href="#">Purchase history</a></li>
+											<li><a href="<c:url value="/user/purchaseHistory"/>">Purchase
+													history</a></li>
 											<li><a href="<c:url value='/logout'/>">Logout</a></li>
 										</ul>
 									</div>
@@ -146,11 +148,11 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-3">
-					<div class="search_box pull-right">
-						<input type="text" placeholder="Search" />
-					</div>
-				</div>
+				<form method="POST" action="search">
+
+					Name <input type="text" name="keyword" id="keyword"> <input
+						type="submit" value="search">
+				</form>
 			</div>
 		</div>
 	</div>

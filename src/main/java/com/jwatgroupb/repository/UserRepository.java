@@ -7,6 +7,7 @@ package com.jwatgroupb.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,7 @@ import com.jwatgroupb.entity.RoleUserEntity;
 import com.jwatgroupb.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
+	
 	UserEntity findOneByUserNameAndActive(String name, int active);
 	
 	
@@ -32,5 +34,14 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	public void update(@Param("userName") String userName, @Param("email") String email,
 			@Param("password") String password, @Param("active") int active,
 			@Param("roleUserEntity") RoleUserEntity roleUserEntity);
+
+
+	@Transactional
+	@Query ("select count (r.id) from UserEntity r")
+	long countTotalRecords();
+
+	@Transactional
+	@Query ( "select r from UserEntity r")
+	public List<UserEntity> find10Users(Pageable pageable);
 
 }
